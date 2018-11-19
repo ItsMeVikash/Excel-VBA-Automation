@@ -1,0 +1,29 @@
+Sub test()
+Dim IE As Object
+Dim doc As HTMLDocument
+
+Set IE = CreateObject("InternetExplorer.Application")
+
+IE.Visible = True
+ URL = "http://www.facebook.com/"
+ IE.navigate URL
+
+ Do While IE.Busy
+    Application.Wait DateAdd("s", 1, Now)
+    
+ Loop
+ 
+ Set doc = IE.document
+  'Fill TextBox
+  doc.getElementById("u_0_j").Value = ThisWorkbook.Sheets("Sheet1").Range("A2").Value
+  doc.getElementById("u_0_l").Value = ThisWorkbook.Sheets("Sheet1").Range("B2").Value
+  
+  'Click Button
+  
+  doc.getElementById("u_0_11").Click
+ 
+  
+  'Close Browser
+  'IE.Quit
+  
+End Sub
